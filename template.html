@@ -11,6 +11,23 @@
     <title>Hello, world!</title>
   </head>
   <body>
+    <nav>
+      <ul class="pagination">
+        {% if current_page == 1 %}
+          <li class="page-item disabled"><a class="page-link" href="../pages/index{{current_page-1}}.html">Previous</a></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="../pages/index{{current_page-1}}.html">Previous</a></li>
+        {% endif %}
+        {% for page in range(pages_count) %}
+          <li class="page-item"><a class="page-link" href="../pages/index{{page+1}}.html">{{page+1}}</a></li>
+        {% endfor %}
+        {% if current_page == pages_count %}
+          <li class="page-item disabled"><a class="page-link" href="../pages/index{{current_page+1}}.html">Next</a></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="../pages/index{{current_page+1}}.html">Next</a></li>
+        {% endif %}
+      </ul>
+    </nav>
     <div class="container">
       <div class="row">
         {% for book in books %}
@@ -18,14 +35,14 @@
           <div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters"> 
               <div class="col-md-4">
-                <img src="{{ book.img_src }}" class="card-img" alt="{{ book.title }}">
+                <img src="../{{ book.img_src }}" class="card-img" alt="{{ book.title }}">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
                   <h5 class="card-title">{{ book.title }}</h5>
                   <p class="card-text">{{ book.genres }}</p>
                   <p class="card-text"><small class="text-muted">{{ book.author }}</small></p>
-                  <a href ="{{ book.book_path }}">Читать</a>
+                  <a href ="../{{ book.book_path }}">Читать</a>
                 </div>
               </div>
             </div>
