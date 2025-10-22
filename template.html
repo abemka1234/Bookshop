@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../static/bootstrap.min.css">
-    <link rel="icon" sizes="40X40" href="../icon.png" type="image/png">
+    <link rel="icon" sizes="40X40" href="../static/icon.png" type="image/png">
     <title>Библиотека</title>
   </head>
   <body>
@@ -36,7 +36,7 @@
           <div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters"> 
               <div class="col-md-4">
-                <img src="../{{ book.img_src }}" class="card-img" alt="{{ book.title }}">
+                <img src="../media/{{ book.img_src|urlencode }}" class="card-img" alt="{{ book.title }}">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
@@ -45,11 +45,11 @@
                   <p class="card-text">
                     <small class="text-muted">
                       {% for genre in book.genres.split(',') %}
-                      <span class="badge badge-light">{{genre}}</span>
+                        <span class="badge badge-light">{{genre}}</span>
                       {% endfor %}
                     </small>
                   </p>
-                  <a href ="../{{ book.book_path }}">Читать</a>
+                  <a href ="../media/{{ book.book_path|urlencode }}">Читать</a>
                 </div>
               </div>
             </div>
